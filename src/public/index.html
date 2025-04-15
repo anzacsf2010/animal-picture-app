@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Picture Viewer</title>
+</head>
+<body>
+<div style="justify-content: center">
+    <h1>Animal Identification Picture Webapp</h1>
+    <form id="animal-form">
+        <label for="animal">Choose animal type:</label>
+        <select id="animal">
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
+            <option value="fox">Fox</option>
+        </select>
+        <br/><br/>
+        <label for="count">Choose how many pictures to save on this iteration:</label>
+        <input type="number" id="count" value="1" min="1">
+        <br/><br/>
+        <button type="submit">Fetch</button>
+    </form>
+    <div id="latest"></div>
+</div>
+<script>
+  const form = document.getElementById('animal-form');
+  const display = document.getElementById('latest');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const animal = document.getElementById('animal').value;
+    const count = document.getElementById('count').value;
+    await fetch(`/animals/${animal}?count=${count}`, { method: 'POST' });
+    const res = await fetch(`/animals/${animal}/latest`);
+    const data = await res.json();
+    if (data.url) {
+      display.innerHTML = `<h3>Latest ${animal}</h3><img src="${data.url}" alt="${animal}" width="400">`;
+    } else {
+      display.innerText = 'No image found.';
+    }
+  });
+</script>
+</body>
+</html>
