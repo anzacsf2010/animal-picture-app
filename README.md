@@ -1,12 +1,21 @@
 # Animal Picture Microservice
 
-This app fetches and stores pictures of cats, dogs, or bears.
+This app fetches and stores pictures of cats, dogs, or foxes (the given API endpoints didn't work).
 
 ## Features
 - Fetch and save animal (dog, cat or fox) pictures via API
 - Retrieve the latest saved picture from the local database.
 
 ## How to Run
+
+For best practices, the database credentials are saved in an .env.local file and it is not tracked as part of this repo. As part of the Camunda interview process, this has been sent along with the repo URL. For everyone else, it is recommended to create a .env.local file in the project root directory containing the necessary variables.
+
+```bash
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=<postgres_password>
+POSTGRES_DB=animaldb
+DATABASE_URL=postgres://postgres:<postgres_password>@db:5432/animaldb
+```
 
 ```bash
 # Clone the repo and navigate to project root
