@@ -11,7 +11,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Routes to save and view latest animal picture (saved in the local database).
 app.use('/animals', animalRoutes);
+// Simple rendering of index.html file to allow user to view and save picture data.
 app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'public', 'index.html'));
 });

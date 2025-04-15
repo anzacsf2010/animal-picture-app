@@ -4,9 +4,9 @@ const axios = require('axios');
 const prisma = require('../db');
 
 const urls = {
-  cat: 'https://api.thecatapi.com/v1/images/search',
-  dog: 'https://dog.ceo/api/breeds/image/random',
-  fox: 'https://randomfox.ca/floof/'
+  cat: 'https://api.thecatapi.com/v1/images/search', // Original cat API didn't work
+  dog: 'https://dog.ceo/api/breeds/image/random', // Original dog API didn't work
+  fox: 'https://randomfox.ca/floof/' // Original bear API worked but wasn't presenting a random picture so to keep the same behavior all around, I changed it to this.
 };
 
 // Controller to fetch latest random picture and save it to the database.
