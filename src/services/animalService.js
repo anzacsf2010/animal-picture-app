@@ -9,7 +9,7 @@ const urls = {
   fox: 'https://randomfox.ca/floof/' // Original bear API worked but wasn't presenting a random picture so to keep the same behavior all around, I changed it to this.
 };
 
-// Controller to fetch latest random picture and save it to the database.
+// Fetch latest random picture and save it to the database.
 exports.fetchAndSave = async (type, count) => {
   if (!urls[type]) throw new Error('Invalid animal type');
   const saved = [];
